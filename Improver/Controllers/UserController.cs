@@ -26,18 +26,20 @@ namespace Improver.Controllers
         public async Task<ActionResult<APIResponse>> SignUP([FromBody] UserBORequest objBoRequest)
         {
             var newUser = await _userService.SignUPUser(objBoRequest);
-            _apiResponse.data = newUser;
+         
            if(newUser.IsSuccess == false)
             {
-                _apiResponse.Staus = false;
+                _apiResponse.Status = false;
                 _apiResponse.StatusCode = HttpStatusCode.Forbidden ;
+                _apiResponse.Errors.Add(newUser.Message);
+
+                return Unauthorized(_apiResponse);
             }
-            else
-            {
-                _apiResponse.Staus = true;
+            
+                _apiResponse.Status = true;
                 _apiResponse.StatusCode = HttpStatusCode.OK;
-            }
-                
+            _apiResponse.data = newUser;
+
             return Ok(_apiResponse);
             
         }
@@ -47,17 +49,19 @@ namespace Improver.Controllers
         public async Task<ActionResult<APIResponse>> Login([FromBody] UserBORequest objBoRequest)
         {
             var LoginUser = await _userService.Login(objBoRequest);
-            _apiResponse.data = LoginUser;
+            
             if (LoginUser.IsSuccess == false)
             {
-                _apiResponse.Staus = false;
+                _apiResponse.Status = false;
                 _apiResponse.StatusCode = HttpStatusCode.Forbidden;
+                _apiResponse.Errors.Add(LoginUser.Message);
+
+                return Unauthorized(_apiResponse);
             }
-            else
-            {
-                _apiResponse.Staus = true;
+           
+                _apiResponse.Status = true;
                 _apiResponse.StatusCode = HttpStatusCode.OK;
-            }
+            _apiResponse.data = LoginUser;
 
             return Ok(_apiResponse);
         }

@@ -4,12 +4,17 @@ namespace CollegeApp.Models
 {
     public class APIResponse
     {
-        public bool Staus { get; set; }
+        public bool Status { get; set; }
 
         public HttpStatusCode StatusCode { get; set; }
 
-        public dynamic data { get; set; }
+        public object? data { get; set; }
 
-        public List<string> Errors { get; set; }
+        public List<string>? Errors { get; set; }
+
+        public APIResponse()
+        {
+            Errors = new List<string>();
+        }
     }
 }

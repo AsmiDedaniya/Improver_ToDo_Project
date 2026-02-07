@@ -28,14 +28,14 @@ namespace Improver.BusinessModel
         {
             UserBOResponse objUserBORes = new UserBOResponse();
 
-            objUserBORes.Userid = objUser.Userid;
+            objUserBORes.Userid = objUser.Userid.Value;
             objUserBORes.Firstname = objUser.Firstname;
             objUserBORes.Lastname = objUser.Lastname;
             objUserBORes.Email = objUser.Email;
             objUserBORes.Password = objUser.Password;
-            objUserBORes.Createddate = objUser.Createddate;
+            objUserBORes.Createddate = objUser.Createddate.Value;
             objUserBORes.Isdeleted = objUser.Isdeleted;
-            objUserBORes.Lastmodifieddate = objUser.Lastmodifieddate;
+            objUserBORes.Lastmodifieddate = objUser.Lastmodifieddate.Value;
             objUserBORes.UserimageUrl = objUser.UserimageUrl;
 
             return objUserBORes;

@@ -159,7 +159,7 @@ namespace Improver.BusinessServices
                     }
                     LoginUserData = UserBOResponse.UserCreate(userData);
 
-                    LoginUserData.token = await this.TokenGenerator(userData.Userid);
+                    LoginUserData.token = await this.TokenGenerator(userData.Userid.Value);
 
                 }
                 LoginUserData.IsSuccess = true;
