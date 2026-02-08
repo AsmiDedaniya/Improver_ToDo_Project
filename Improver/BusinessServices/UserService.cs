@@ -111,9 +111,11 @@ namespace Improver.BusinessServices
                 //add claims
                 Subject = new System.Security.Claims.ClaimsIdentity(new Claim[]
                 {
-                            new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
+                            new Claim("userid", userId.ToString())
                 }),
                 Expires = DateTime.Now.AddHours(8),
+                Issuer = _configuration["Jwt:Issuer"],      
+                Audience = _configuration["Jwt:Audience"],
                 SigningCredentials = new(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
