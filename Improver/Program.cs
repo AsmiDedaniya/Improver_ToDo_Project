@@ -18,6 +18,7 @@ builder.Services.AddControllers(options => options.ReturnHttpNotAcceptable = tru
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
 
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();  this is updated to add authrization in swagger

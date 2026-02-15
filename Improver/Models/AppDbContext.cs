@@ -20,6 +20,12 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<Category> Categories { get; set; }
 
+    public virtual DbSet<Staticmisctype> Staticmisctype { get; set; }
+
+    public virtual DbSet<Staticmiscvaluemap> Staticmiscvaluemap { get; set; }
+
+    public virtual DbSet<Tasks> Tasks { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -27,6 +33,10 @@ public partial class AppDbContext : DbContext
         modelBuilder.ApplyConfiguration(new UserConfig());
 
         modelBuilder.ApplyConfiguration(new CategoryConfig());
+
+        modelBuilder.ApplyConfiguration(new StaticmiscTypeConfig());
+        modelBuilder.ApplyConfiguration(new StaticMiscValueMapConfig());
+        modelBuilder.ApplyConfiguration(new TaskConfig());
     }
 
 }

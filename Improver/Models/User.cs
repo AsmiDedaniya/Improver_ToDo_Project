@@ -24,4 +24,6 @@ public partial class User
     public bool? Isdeleted { get; set; }
 
     public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
+
+    public virtual ICollection<Tasks> Tasks { get; set; } = new List<Tasks>();
 }

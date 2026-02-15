@@ -12,4 +12,8 @@ public partial class Staticmiscvaluemap
     public int Staticmisctypeid { get; set; }
 
     public virtual Staticmisctype Staticmisctype { get; set; } = null!;
+
+    public virtual ICollection<Tasks> TaskTaskpriorities { get; set; } = new List<Tasks>();
+
+    public virtual ICollection<Tasks> TaskTaskstatuses { get; set; } = new List<Tasks>();
 }
